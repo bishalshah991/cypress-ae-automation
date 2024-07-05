@@ -1,0 +1,11 @@
+{
+    "baseUrl":"https://aeuat.benekiva.io/login",
+    "UsernameCsr":"bishal+csr@benekiva.com",
+    "UsernameFHD":"MyNewPassword@1901",
+    "Password":"MyNewPassword@1901",
+    "WrongPassword":"MyTest",
+    "CSRPolicy":"00GWP0022081",
+    "InsuredName": "BARBARA HAGER",
+    "TestData":"This is a Test Data"
+
+}

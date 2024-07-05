@@ -1,0 +1,47 @@
+{
+    "from": "bishal.shah@genesesolution.com",
+    "subject": "March statement",
+    "template_code": "2iV4OH1fim6X4KnK4efTOmmmTPN",
+    "recipients": [
+        {
+            "to": "bishal.shah@genesesolution.com",
+            "dynamic_content": {
+                 "customer_Name":"Bishal Shah",
+                 "customer_email":"bishal.shah@genesesolution.com",
+                 "customer_phone" :"9898989898",
+                 "customer_contact": "Address",
+                 "statement_period":"01-06-2024 to 30-06-2024"
+ 
+            },
+            "attachments": [
+                {
+                    "file_name": "flower.png",
+                    "file_type": "image/png",
+                    "file_data": "iVBORw0KGgoAAAANSUhEUgAAApcAAAHwCAYAAADzdUTu"
+                }
+            ]
+            
+        },
+        {
+            "to": "simran.niroula@genesesolution.com",
+            "dynamic_content": {
+                 "customer_Name":"Simran Niroula",
+                 "customer_email":"simran.niroula@genesesolution.com",
+                 "customer_phone" :"9898989898",
+                 "customer_contact": "Address",
+                 "statement_period":"01-06-2024 to 30-06-2024"
+ 
+            },
+            "attachments": [
+                {
+                    "file_name": "flower.png",
+                    "file_type": "image/png",
+                    "file_data": "iVBORw0KGgoAAAANSUhEUgAAApcAAAHwCAYAAADzdUTu"
+                }
+            ]
+            
+        }
+    ]
+ }
+ 
+ 
