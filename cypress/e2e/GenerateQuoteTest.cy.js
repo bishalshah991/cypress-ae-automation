@@ -22,8 +22,8 @@ describe('Verify the Generate Quote page',function(){
     this.beforeEach(function(){
         cy.visit(config.baseUrl)
         
-        login.loginFromEnvironment()
-        //login.gotoValidLogin(config.UsernameCsr,config.Password)
+        //login.loginFromEnvironment()
+        login.gotoValidLogin(config.UsernameCsr,config.Password)
         login.waitForpayment()
         login.gotoNavigation()
     })
@@ -32,8 +32,8 @@ describe('Verify the Generate Quote page',function(){
     it('Search the Policy, Generate Quote and Claim Information',function(){
         policy.gotoPolicySearchTab()
 
-        policy.enterThePolicyFromEnvironment()
-        //policy.enterthePolicyFromLocal(config.CSRPolicy)
+        // policy.enterThePolicyFromEnvironment()
+        policy.enterthePolicyFromLocal(config.CSRPolicy)
 
         policy.gotoThreeDots()
         generate.waitforGeneratePage()
