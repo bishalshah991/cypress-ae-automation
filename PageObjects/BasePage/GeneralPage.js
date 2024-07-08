@@ -70,3 +70,8 @@ export function generatenRandomNumber() {
       return randomNumberString;
 
 }
+
+export function usebackspace(locator){
+    cy.get(locator).type('{backspace}')
+
+}

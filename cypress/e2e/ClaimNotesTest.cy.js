@@ -5,16 +5,15 @@ import config from "../Config.json"
 import { generateRandomText,generatenRandomNumber } from "../../PageObjects/BasePage/GeneralPage"
 import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
 import { Ae_needs_reuirement } from "../../PageObjects/PageActions/NeedsRequirement"
-import { Ae_Claim_information } from "../../PageObjects/PageActions/ClaimInformation"
-import { Ae_Generate_quote_Page } from "../../PageObjects/PageActions/GenerateQuote"
+import { Ae_Claim_Note } from "../../PageObjects/PageActions/ClaimNote"
 import { Ae_PageElements } from "../../PageObjects/PageLocator/PageElements"
 
 describe('Verify the Login from the Application',function(){
     const login = new Ae_Login_Page
     const needs = new Ae_needs_reuirement
-    const claimInformation = new Ae_Claim_information
-    const generate = new Ae_Generate_quote_Page
+    const claim = new Ae_Claim_Note
     const page = new Ae_PageElements
+
 
     this.beforeEach(function(){
         cy.visit(config.baseUrl)
@@ -32,20 +31,16 @@ describe('Verify the Login from the Application',function(){
         //needs.enterThePolicyNumberFromEnvironment()
 
         needs.goToDetailPage()
-        claimInformation.ScrollThePage()
-        claimInformation.enterPolicyNumber(generatenRandomNumber())
-        claimInformation.enterInsuredName(config.InsuredName)
-        claimInformation.enterEmailAddress(config.UsernameCsr)
-
-        generate.enter_cause_of_death()
-        claimInformation.enterFuneralHome()
-        claimInformation.enterFuneralState()
-        claimInformation.enterInputFuneralHome(config.TestData)
-        claimInformation.enterInputFuneralPhoneNumber(config.Phone)
-        claimInformation.enterFuneralHomeAddress(config.Address)
-        claimInformation.enterFuneralLicenseNumber(config.Phone)
+        //claim.ScrollThePage()
+        //claim.AddNewInternalNote(generateRandomText(10))
         page.WaitToNeedsRequirementPage()
-        claimInformation.scrollThePage()
+        claim.goToSendEmail()
+
+        claim.goToClearEmail(config.UsernameCsr)
+        claim.enterSubject(config.TestData)
+        claim.enterTheEmail(config.TestData)
+
+        
     })
 
 
