@@ -6,7 +6,6 @@ import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
 import { Ae_needs_reuirement } from "../../PageObjects/PageActions/NeedsRequirement"
 import { Ae_PageElements } from "../../PageObjects/PageLocator/PageElements"
 
-import { Ae_Generate_quote_Page } from "../../PageObjects/PageActions/GenerateQuote"
 
 
 describe('Verify the Login from the Application',function(){

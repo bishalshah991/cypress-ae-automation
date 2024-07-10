@@ -32,6 +32,16 @@ export function click(locator){
     return cy.get(locator).click()
 }
 
+export function clickLocator(locator){
+    cy.get(locator).then($element => {
+        if ($element.is(':visible')) {
+          cy.wrap($element).click();
+        } else {
+          cy.log('Element is not found');
+        }
+      });
+    }
+
 export function hitEnter(locator,text){
     return cy.get(locator).type(text).type('{enter}');
 }
