@@ -29,7 +29,7 @@ export function type(locator,text){
 }
 
 export function click(locator){
-    return cy.get(locator).click()
+    return cy.get(locator).click({force: true})
 }
 
 export function clickLocator(locator){
@@ -57,6 +57,21 @@ export function assert(locator,expText){
 export function scrollpageHorizontal(locator){
     return cy.get(locator).scrollIntoView().should('be.visible')
 }
+
+export function scrollUntilText(text) {
+    cy.contains(text).then(($el) => {
+      if ($el.is(':visible')) {
+        // If the text is visible, do nothing
+        return;
+      } else {
+        // Scroll a bit and check again
+        cy.scrollTo('bottom', { duration: 500, offset: { top: -500 } }).then(() => {
+          scrollUntilText(text); // Recursively call the function until text is found
+        });
+      }
+    });
+  }
+  
 
 
 export function generateRandomText(length) {

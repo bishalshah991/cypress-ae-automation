@@ -1,5 +1,5 @@
 
-import { waitTheButton,type,click,scrollpageHorizontal } from "../BasePage/GeneralPage";
+import { waitTheButton,type,click,scrollpageHorizontal, usebackspace, clear, scrollUntilText } from "../BasePage/GeneralPage";
 
 
 export class Ae_Claim_information{
@@ -17,6 +17,16 @@ export class Ae_Claim_information{
     TextFuneralAddress = 'input[class^="mat-input-element mat-form-field-autofill-control ctrl fhA"]'
     TextFuneralHomeLicense = 'input[class^="mat-input-element mat-form-field-autofill-control ctrl fhL"]'
     UpdateClaimIntake = 'button[id="generate-quote"]'
+
+    ClaimNote = '.header > .mat-focus-indicator > .mat-button-wrapper > .mat-icon'
+    InternalNote = 'div[class^="gridster-container"]>ngx-gridster-item:nth-of-type(4)>div>div:nth-of-type(1)>div>div:nth-of-type(2)>div>div:nth-of-type(1)>button'
+    WriteNote = 'div[class^="fr-element fr-view"]>div'
+    SubmitButton = 'div[class^="mat-dialog-actions m"]>button'
+    SendEmail = 'div[class^="gridster-container"]>ngx-gridster-item:nth-of-type(6)>div>div:nth-of-type(1)>div>div:nth-of-type(2)>div>div:nth-of-type(1)>button:nth-of-type(1)'
+    CrossIcon = '.mat-chip-list-wrapper > :nth-child(1) > .mat-icon'
+    SelectEmail = 'input[class^="mat-autocomplete-trigger mat-chip-inpu"]'
+    EmailSubject = 'input[placeholder="Enter Email Subject"]'
+    SendClaim = 'button[class^="mat-focus-indicator save-button mat"]'
     
     ScrollThePage(){
         scrollpageHorizontal(this.ClaimIntake)
@@ -26,6 +36,8 @@ export class Ae_Claim_information{
     }
 
     enterPolicyNumber(text){
+        clear(this.PolicyNumber)
+        click(this.PolicyNumber)
         type(this.PolicyNumber,text)
     }
 
@@ -56,27 +68,66 @@ export class Ae_Claim_information{
     }
 
     enterInputFuneralPhoneNumber(text){
+        click(this.TextFuneralPhone)
         type(this.TextFuneralPhone,text)
     }
 
     enterFuneralHomeAddress(text){
+        click(this.TextFuneralAddress)
         type(this.TextFuneralAddress,text)
     }
 
     enterFuneralLicenseNumber(text){
         type(this.TextFuneralHomeLicense,text)
         click(this.UpdateClaimIntake)
-    }
-
-    scrollThePage(){
         waitTheButton(this.ClaimIntake)
-        scrollpageHorizontal(this.ClaimIntake)
     }
 
-    ScrollThePageToClaimIntake(){
+    ScrollThePageTillClaimNote(){
+        cy.wait(5000)
+        scrollpageHorizontal(this.ClaimIntake)
+        click(this.InternalNote)
+        cy.wait(3000)
+    }
+
+    AddNewInternalNote(text){
+        waitTheButton(this.WriteNote)
+        click(this.WriteNote)
+        type(this.WriteNote,text)
+        waitTheButton(this.SubmitButton)
+        click(this.SubmitButton)
+        waitTheButton(this.InternalNote)
+    }
+
+    goToSendEmail(){
         cy.wait(3000)
         scrollpageHorizontal(this.ClaimIntake)
+        click(this.SendEmail)
+        cy.wait(3000)
+        click(this.CrossIcon)
+        cy.wait(3000)
     }
-    
+
+    goToClearEmail(text){
+        usebackspace(this.SelectEmail)
+        cy.wait(3000)
+        type(this.SelectEmail,text)
+        cy.wait(3000)
+    }
+
+    enterSubject(text){
+        click(this.EmailSubject)
+        cy.wait(3000)
+        type(this.EmailSubject,text)
+        cy.wait(3000)
+    }
+
+    enterTheEmail(text){
+        click(this.WriteNote)
+        type(this.WriteNote,text)
+        click(this.SendClaim)
+        waitTheButton(this.SendEmail)
+
+    }
 
 }

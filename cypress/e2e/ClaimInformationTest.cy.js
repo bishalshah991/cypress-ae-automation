@@ -32,20 +32,29 @@ describe('Verify the Login from the Application',function(){
         //needs.enterThePolicyNumberFromEnvironment()
 
         needs.goToDetailPage()
+        
         claimInformation.ScrollThePage()
         claimInformation.enterPolicyNumber(generatenRandomNumber())
         claimInformation.enterInsuredName(config.InsuredName)
         claimInformation.enterEmailAddress(config.UsernameCsr)
 
-        generate.enter_cause_of_death()
+        generate.enter_detail_cause_of_death()
         claimInformation.enterFuneralHome()
         claimInformation.enterFuneralState()
         claimInformation.enterInputFuneralHome(config.TestData)
-        claimInformation.enterInputFuneralPhoneNumber(config.Phone)
+        claimInformation.enterInputFuneralPhoneNumber(generatenRandomNumber())
         claimInformation.enterFuneralHomeAddress(config.Address)
-        claimInformation.enterFuneralLicenseNumber(config.Phone)
+        claimInformation.enterFuneralLicenseNumber(generatenRandomNumber(5))
         page.WaitToNeedsRequirementPage()
-        claimInformation.scrollThePage()
+
+        claimInformation.ScrollThePageTillClaimNote()
+        claimInformation.AddNewInternalNote(generateRandomText(50))
+
+        claimInformation.goToSendEmail()
+        claimInformation.goToClearEmail(config.UsernameCsr)
+        claimInformation.enterSubject(generateRandomText(8))
+        claimInformation.enterTheEmail(generateRandomText(20))
+        page.WaitToNeedsRequirementPage()
     })
 
 

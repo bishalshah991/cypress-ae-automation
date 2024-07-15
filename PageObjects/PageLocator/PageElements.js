@@ -6,6 +6,12 @@ export class Ae_PageElements{
     DiscordIcon = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(2)>span:nth-of-type(1)>mat-icon'
     Inbox = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(3)>span:nth-of-type(1)>mat-icon'
     Beneficiaries = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(4)>span:nth-of-type(1)>mat-icon'
+    AddBeneFiciary = 'div[id="bene-screen-dialog-content"]>div>button>span'
+    FirstName = 'input[id="FirstName"]'
+    LastName = 'input[id="LastName"]'
+    BusinessEntity = 'input[id="BusinessEntity"]'
+    AddressLine1 = 'input[id="AddressLine1"]'
+   
     AdditionalInfor = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(5)>span:nth-of-type(1)>mat-icon'
     EventLog = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(6)>span:nth-of-type(1)>mat-icon'
     LockOut = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(7)>span:nth-of-type(1)>mat-icon'
@@ -28,5 +34,10 @@ export class Ae_PageElements{
     clickConfimButton(){
         waitTheButton(this.ConfirmButton)
         click(this.ConfirmButton)
+    }
+
+    go_to_add_beneficiary(){
+        click(this.Beneficiaries)
+        waitTheButton(this.AddBeneFiciary)
     }
 }
