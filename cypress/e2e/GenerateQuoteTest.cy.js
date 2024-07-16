@@ -4,7 +4,7 @@
 import config from "../Config.json"
 import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
 import { Ae_Policy_Search_Page } from "../../PageObjects/PageActions/PolicySearch"
-import { Ae_Generate_Quote_Page } from "../../PageObjects/PageActions/Generatequote"
+import { Ae_Generate_Quote_Page } from "../../PageObjects/PageActions/GenerateQuote"
 import { Ae_handling_calender } from "../../PageObjects/Utility/Calendar"
 import { generatenRandomNumber } from "../../PageObjects/BasePage/GeneralPage"
 import { Ae_PageElements } from "../../PageObjects/PageLocator/PageElements"

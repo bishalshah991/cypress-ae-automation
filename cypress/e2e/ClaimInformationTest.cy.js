@@ -6,7 +6,7 @@ import { generateRandomText,generatenRandomNumber } from "../../PageObjects/Base
 import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
 import { Ae_needs_reuirement } from "../../PageObjects/PageActions/NeedsRequirement"
 import { Ae_Claim_information } from "../../PageObjects/PageActions/ClaimInformation"
-import { Ae_Generate_Quote_Page } from "../../PageObjects/PageActions/Generatequote"
+import { Ae_Generate_Quote_Page } from "../../PageObjects/PageActions/GenerateQuote"
 import { Ae_PageElements } from "../../PageObjects/PageLocator/PageElements"
 
 describe('Verify the Login from the Application',function(){
