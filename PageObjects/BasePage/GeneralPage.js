@@ -29,7 +29,11 @@ export function type(locator,text){
 }
 
 export function click(locator){
-    return cy.get(locator).click({force: true})
+    return cy.get(locator).click({multiple: true})
+}
+
+export function clickButton(locator){
+  return cy.get(locator).click()
 }
 
 export function clickLocator(locator){

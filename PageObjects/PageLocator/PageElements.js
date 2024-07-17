@@ -30,6 +30,7 @@ export class Ae_PageElements{
     TxReconTab = '.TX > .mat-ripple > .nav-link-title'
     TxSearchBox = '.search > .mat-tooltip-trigger'
     WaitTxPolicy = 'mat-table[id^="claimQueueList"]>mat-row>mat-cell:nth-of-type(2)>div'
+    ViewCHeckList = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(7)>span:nth-of-type(1)>mat-icon'
 
     WaitToNeedsRequirementPage(){
         waitTheButton(this.DiscordIcon)
@@ -90,5 +91,9 @@ export class Ae_PageElements{
         waitTheButton(this.TxSearchBox)
         hitEnter(this.TxSearchBox,text)
         waitTheButton(this.WaitTxPolicy)
+    }
+
+    go_to_view_checklist(){
+        click(this.ViewCHeckList)
     }
 }
