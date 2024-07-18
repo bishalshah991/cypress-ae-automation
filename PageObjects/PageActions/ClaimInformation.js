@@ -1,5 +1,5 @@
 
-import { waitTheButton,type,click,scrollpageHorizontal, usebackspace, clear, scrollUntilText } from "../BasePage/GeneralPage";
+import { waitTheButton,type,click,scrollpageHorizontal, usebackspace, clear, scrollUntilText, xpathLocator, waitThePage } from "../BasePage/GeneralPage";
 
 
 export class Ae_Claim_information{
@@ -19,10 +19,10 @@ export class Ae_Claim_information{
     UpdateClaimIntake = 'button[id="generate-quote"]'
 
     ClaimNote = '.header > .mat-focus-indicator > .mat-button-wrapper > .mat-icon'
-    InternalNote = 'div[class^="gridster-container"]>ngx-gridster-item:nth-of-type(4)>div>div:nth-of-type(1)>div>div:nth-of-type(2)>div>div:nth-of-type(1)>button'
+    InternalNote = '//span[contains(text(),"Add New Internal Note")]'
     WriteNote = 'div[class^="fr-element fr-view"]>div'
     SubmitButton = 'div[class^="mat-dialog-actions m"]>button'
-    SendEmail = 'div[class^="gridster-container"]>ngx-gridster-item:nth-of-type(6)>div>div:nth-of-type(1)>div>div:nth-of-type(2)>div>div:nth-of-type(1)>button:nth-of-type(1)'
+    SendEmail = '(//span[contains(text()," Send Email ")])[2]'
     CrossIcon = '.mat-chip-list-wrapper > :nth-child(1) > .mat-icon'
     SelectEmail = 'input[class^="mat-autocomplete-trigger mat-chip-inpu"]'
     EmailSubject = 'input[placeholder="Enter Email Subject"]'
@@ -32,7 +32,6 @@ export class Ae_Claim_information{
         scrollpageHorizontal(this.ClaimIntake)
         click(this.ClaimIntake)
         waitTheButton(this.PolicyNumber)
-        cy.wait(3000)
     }
 
     enterPolicyNumber(text){
@@ -54,7 +53,6 @@ export class Ae_Claim_information{
         click(this.FuneralHome)
         waitTheButton(this.FunealHomeValue)
         click(this.FunealHomeValue)
-        cy.wait(2000)
     }
 
     enterFuneralState(){
@@ -84,49 +82,46 @@ export class Ae_Claim_information{
     }
 
     ScrollThePageTillClaimNote(){
-        cy.wait(5000)
-        scrollpageHorizontal(this.ClaimIntake)
-        click(this.InternalNote)
-        cy.wait(3000)
+       cy.wait(5000)
+       scrollpageHorizontal(this.ClaimIntake)
+       xpathLocator(this.InternalNote)
+       cy.wait(2000)
     }
 
     AddNewInternalNote(text){
-        waitTheButton(this.WriteNote)
         click(this.WriteNote)
         type(this.WriteNote,text)
-        waitTheButton(this.SubmitButton)
         click(this.SubmitButton)
-        waitTheButton(this.InternalNote)
     }
 
     goToSendEmail(){
-        cy.wait(3000)
-        scrollpageHorizontal(this.ClaimIntake)
-        click(this.SendEmail)
-        cy.wait(3000)
+        cy.wait(5000)
+        xpathLocator(this.SendEmail)
+        cy.wait(2000)
         click(this.CrossIcon)
-        cy.wait(3000)
+        cy.wait(2000)
+
     }
 
     goToClearEmail(text){
         usebackspace(this.SelectEmail)
-        cy.wait(3000)
+        cy.wait(2000)
         type(this.SelectEmail,text)
-        cy.wait(3000)
+        cy.wait(2000)
     }
 
     enterSubject(text){
         click(this.EmailSubject)
-        cy.wait(3000)
+        cy.wait(5000)
         type(this.EmailSubject,text)
-        cy.wait(3000)
+        cy.wait(5000)
     }
 
     enterTheEmail(text){
         click(this.WriteNote)
         type(this.WriteNote,text)
         click(this.SendClaim)
-        waitTheButton(this.SendEmail)
+        cy.wait(10000)
 
     }
 

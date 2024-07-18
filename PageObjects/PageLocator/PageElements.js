@@ -1,4 +1,4 @@
-import { waitTheButton,type,clear,click,assert,scrollpageHorizonta,hitEnter } from "../BasePage/GeneralPage"
+import { waitTheButton,type,clear,click,assert,scrollpageHorizontal,hitEnter } from "../BasePage/GeneralPage"
 
 export class Ae_PageElements{
 
@@ -14,8 +14,12 @@ export class Ae_PageElements{
     AddressLine1 = 'input[id="AddressLine1"]'
    
     AdditionalInfor = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(5)>span:nth-of-type(1)>mat-icon'
+    AdditionalCross = 'div[class^="cdk-overlay-pane additional-fields"]>mat-dialog-container>fuse-additional-fields-dialog>div>mat-toolbar>button>span:nth-of-type(1)'
     EventLog = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(6)>span:nth-of-type(1)>mat-icon'
+    EventBack = '#back > .mat-button-wrapper > .mat-icon'
     LockOut = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(7)>span:nth-of-type(1)>mat-icon'
+    ReleaseLock = 'div[id="caseload"]>fuse-action-panel>fuse-lock-message>div>a'
+
     Assign_to_me = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(8)>span:nth-of-type(1)>mat-icon'
     BackButton = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(9)>span:nth-of-type(1)>mat-icon'
     ConfirmButton = 'button[aria-label="CONFIRM"]'
@@ -31,6 +35,8 @@ export class Ae_PageElements{
     TxSearchBox = '.search > .mat-tooltip-trigger'
     WaitTxPolicy = 'mat-table[id^="claimQueueList"]>mat-row>mat-cell:nth-of-type(2)>div'
     ViewCHeckList = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(7)>span:nth-of-type(1)>mat-icon'
+    Approve = 'div[id="caseload"]>fuse-action-panel>div>div>div:nth-of-type(2)>button:nth-of-type(10)>span:nth-of-type(1)>mat-icon'
+
 
     WaitToNeedsRequirementPage(){
         waitTheButton(this.DiscordIcon)
@@ -96,4 +102,32 @@ export class Ae_PageElements{
     go_to_view_checklist(){
         click(this.ViewCHeckList)
     }
+
+    go_to_Lock_out(){
+        click(this.LockOut)
+        waitTheButton(this.ReleaseLock)
+        click(this.ReleaseLock)
+        cy.wait(5000)
+    }
+
+    go_to_additional_info(){
+        click(this.AdditionalInfor)
+        cy.wait(5000)
+        click(this.AdditionalCross)
+
+    }
+
+    go_to_event_log(){
+        click(this.EventLog)
+        cy.wait(7000)
+        click(this.EventBack)
+        cy.wait(10000)
+    }
+
+    go_to_approve_tab(){
+        click(this.Approve)
+        waitTheButton(this.ConfirmButton)
+        click(this.ClaimConfirmButton)
+    }
+
 }

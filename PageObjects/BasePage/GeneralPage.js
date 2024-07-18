@@ -24,12 +24,16 @@ export function enterpassword(locator){
 
 }
 
+export function xpathLocator(locator){
+  return cy.xpath(locator).click()
+}
+
 export function type(locator,text){
     return cy.get(locator).type(text)
 }
 
 export function click(locator){
-    return cy.get(locator).click({multiple: true})
+    return cy.get(locator).click()
 }
 
 export function clickButton(locator){
@@ -98,6 +102,10 @@ export function generatenRandomNumber() {
 
       return randomNumberString;
 
+}
+
+export function waitThePage(text){
+  cy.wait(text)
 }
 
 export function usebackspace(locator){

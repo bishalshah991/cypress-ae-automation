@@ -4,11 +4,14 @@
     "UsernameFHD":"MyNewPassword@1901",
     "Password":"MyNewPassword@1901",
     "WrongPassword":"MyTest",
-    "CSRPolicy":"00GWP0002392",
+    "CSRPolicy":"00GWP0003590",
     "InsuredName": "BARBARA HAGER",
     "TestData":"This is a Test Data",
     "Phone":"9898989898",
-    "Address":"12, New Link Road"
+    "Address":"12, New Link Road",
+    "Shorttime":"3000",
+    "middleTime":"5000",
+    "LongTime":"10000"
     
 
 }

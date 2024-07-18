@@ -23,3 +23,18 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+import config from "../Config.json"
+import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
+import { Ae_needs_reuirement } from "../../PageObjects/PageActions/NeedsRequirement"
+
+Cypress.Commands.add('login', (username,password) => {
+    const login = new Ae_Login_Page
+    const needs = new Ae_needs_reuirement
+    cy.visit(config.baseUrl)
+        //login.loginFromEnvironment()
+        login.gotoValidLogin(username,password)
+        login.waitForpayment()
+        login.gotoNavigation()
+  });
+  

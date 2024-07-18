@@ -6,14 +6,14 @@ import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
 import { Ae_needs_reuirement } from "../../PageObjects/PageActions/NeedsRequirement"
 import { Ae_PageElements } from "../../PageObjects/PageLocator/PageElements"
 
-import { Ae_Generate_quote_Page } from "../../PageObjects/PageActions/GenerateQuote"
+import { Ae_Generate_Quote_Page } from "../../PageObjects/PageActions/GenerateQuote"
 
 
 describe('Verify the Login from the Application',function(){
     const login = new Ae_Login_Page
     const needs = new Ae_needs_reuirement
     const page = new Ae_PageElements
-    const generate = new Ae_Generate_quote_Page
+    const generate = new Ae_Generate_Quote_Page
 
     this.beforeEach(function(){
         cy.visit(config.baseUrl)

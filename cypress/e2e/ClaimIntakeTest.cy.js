@@ -21,23 +21,20 @@ describe('Verify the Login from the Application',function(){
     })
 
     it("Verify the valid login through application",function(){
-        //login.loginFromEnvironment()
-        login.gotoValidLogin(config.UsernameCsr,config.Password)
+        login.loginFromEnvironment()
+        // login.gotoValidLogin(config.UsernameCsr,config.Password)
         login.waitForpayment()
         login.gotoNavigation()
-
         needs.gotoNeedsRequirement()
 
-        needs.enterThePolicyNumber(config.CSRPolicy)
-        //needs.enterThePolicyNumberFromEnvironment()
+        //needs.enterThePolicyNumber(config.CSRPolicy)
+        needs.enterThePolicyNumberFromEnvironment()
 
         needs.goToDetailPage()
-        
         claimInformation.ScrollThePage()
         claimInformation.enterPolicyNumber(generatenRandomNumber())
         claimInformation.enterInsuredName(config.InsuredName)
         claimInformation.enterEmailAddress(config.UsernameCsr)
-
         generate.enter_detail_cause_of_death()
         claimInformation.enterFuneralHome()
         claimInformation.enterFuneralState()
@@ -46,15 +43,14 @@ describe('Verify the Login from the Application',function(){
         claimInformation.enterFuneralHomeAddress(config.Address)
         claimInformation.enterFuneralLicenseNumber(generatenRandomNumber(5))
         page.WaitToNeedsRequirementPage()
-
         claimInformation.ScrollThePageTillClaimNote()
-        claimInformation.AddNewInternalNote(generateRandomText(50))
-
+        claimInformation.AddNewInternalNote(generateRandomText(20))
         claimInformation.goToSendEmail()
         claimInformation.goToClearEmail(config.UsernameCsr)
-        claimInformation.enterSubject(generateRandomText(8))
+        claimInformation.enterSubject(generateRandomText(5))
         claimInformation.enterTheEmail(generateRandomText(20))
-        page.WaitToNeedsRequirementPage()
+        page.go_to_inbox()
+        login.logoutFromApplication()
     })
 
 

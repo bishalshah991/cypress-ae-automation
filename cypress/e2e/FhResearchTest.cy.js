@@ -2,18 +2,17 @@
 
 
 import config from "../Config.json"
+import { generateRandomText } from "../../PageObjects/BasePage/GeneralPage"
 import { Ae_Login_Page } from "../../PageObjects/PageActions/LoginPage"
-import { Ae_needs_reuirement } from "../../PageObjects/PageActions/NeedsRequirement"
 import { Ae_PageElements } from "../../PageObjects/PageLocator/PageElements"
-import { Ae_Upload_Document } from "../../PageObjects/Utility/UploadDocument"
-
-
+import { Ae_Fh_Research } from "../../PageObjects/PageActions/FhResearch"
+import { Ae_Payment } from "../../PageObjects/PageActions/Payment"
 
 describe('Verify the Login from the Application',function(){
     const login = new Ae_Login_Page
-    const needs = new Ae_needs_reuirement
     const page = new Ae_PageElements
-    const upload = new Ae_Upload_Document
+    const research = new Ae_Fh_Research
+    const payment = new Ae_Payment
     
     this.beforeEach(function(){
         cy.visit(config.baseUrl)
@@ -24,21 +23,18 @@ describe('Verify the Login from the Application',function(){
         login.gotoValidLogin(config.UsernameCsr,config.Password)
         login.waitForpayment()
         login.gotoNavigation()
-        needs.gotoNeedsRequirement()
+        research.scroll_the_tx_recon_audit_flow()
+        research.search_the_policy(config.CSRPolicy)
+        research.go_to_checklist_page()
+        page.WaitToNeedsRequirementPage()
+        page.go_to_assign_to_me()
+        page.WaitToNeedsRequirementPage()
+        page.go_to_approve_tab()
+        page.WaitToNeedsRequirementPage()
+        payment.go_to_payment()
+        payment.go_to_terminate_tab()
+        payment.go_to_select_category(generateRandomText(20))
 
-        //needs.enterThePolicyNumberFromEnvironment
-        needs.enterThePolicyNumber(config.CSRPolicy)
-        needs.goToDetailPage()
-        page.WaitToNeedsRequirementPage()
-        page.go_to_view_checklist()
-        page.WaitToNeedsRequirementPage()
-        upload.go_to_file_upload()
-        upload.go_match_this()
-        upload.go_save_button()
-        page.WaitToNeedsRequirementPage()
-        upload.download_uploaded_document()
-        upload.delete_Uploaded_document()
-    
     })
 
 

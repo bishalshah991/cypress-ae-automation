@@ -10,6 +10,8 @@ export class Ae_Upload_Document{
     Download = 'div[role="menu"]>div>button:nth-of-type(2)>mat-icon'
     Delete = 'div[class^="mat-menu-content ng-tns-c"]>button:nth-of-type(4)>mat-icon'
     OkButton = '[aria-label="OK"]'
+    ShowMapper = 'div[class^="mat-menu-content ng-tns-c"]>button:nth-of-type(3)>mat-icon'
+    ViewButton ='div[class^="checklists ng-tns-c"]>div:nth-of-type(2)>div>div:nth-of-type(3)>button>span:nth-of-type(1)>span'
 
 
     go_to_file_upload()
@@ -48,5 +50,15 @@ export class Ae_Upload_Document{
         clickButton(this.Delete)
         waitTheButton(this.OkButton)
         clickButton(this.OkButton)
+        cy.wait(5000)
+    }
+
+    go_to_show_mapper(){
+        click(this.DeleteThreeDots)
+        waitTheButton(this.Download)
+        click(this.ShowMapper)
+        waitTheButton(this.MatchThis)
+        click(this.SaveButton)
+        cy.wait(5000)
     }
 }
